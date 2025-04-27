@@ -130,6 +130,152 @@
                             <input type="checkbox" id="convertPDFToImage" name="convertPDFToImage">
                             <label for="convertPDFToImage" th:text="#{watermark.selectText.10}"></label>
                         </div>
+
+                        <!-- Advanced Watermark Options -->
+                        <div class="mb-3">
+                            <h5>Advanced Watermark Options</h5>
+                        </div>
+
+                        <!-- Random Positioning -->
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" id="randomPosition" name="randomPosition" class="form-check-input">
+                            <label for="randomPosition" class="form-check-label">Random positioning</label>
+                        </div>
+
+                        <!-- Random Orientation -->
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" id="randomOrientation" name="randomOrientation" class="form-check-input" onchange="toggleRotationRange()">
+                            <label for="randomOrientation" class="form-check-label">Random orientation</label>
+                        </div>
+                        <div id="rotationRangeGroup" style="display: none;">
+                            <div class="mb-3">
+                                <label for="minRotation">Minimum rotation (degrees)</label>
+                                <input type="text" id="minRotation" name="minRotation" class="form-control" value="0">
+                            </div>
+                            <div class="mb-3">
+                                <label for="maxRotation">Maximum rotation (degrees)</label>
+                                <input type="text" id="maxRotation" name="maxRotation" class="form-control" value="360">
+                            </div>
+                        </div>
+
+                        <!-- Random Font -->
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" id="randomFont" name="randomFont" class="form-check-input" onchange="toggleFontSelection()">
+                            <label for="randomFont" class="form-check-label">Random font</label>
+                        </div>
+                        <div id="fontSelectionGroup" style="display: none;">
+                            <div class="mb-3">
+                                <label>Select fonts to use</label>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="fontHelvetica" name="selectedFonts" value="helvetica">
+                                    <label class="form-check-label" for="fontHelvetica">Helvetica</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="fontTimes" name="selectedFonts" value="times">
+                                    <label class="form-check-label" for="fontTimes">Times</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="fontCourier" name="selectedFonts" value="courier">
+                                    <label class="form-check-label" for="fontCourier">Courier</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Random Font Size -->
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" id="randomFontSize" name="randomFontSize" class="form-check-input" onchange="toggleFontSizeRange()">
+                            <label for="randomFontSize" class="form-check-label">Random font size</label>
+                        </div>
+                        <div id="fontSizeRangeGroup" style="display: none;">
+                            <div class="mb-3">
+                                <label for="minFontSize">Minimum font size</label>
+                                <input type="text" id="minFontSize" name="minFontSize" class="form-control" value="10">
+                            </div>
+                            <div class="mb-3">
+                                <label for="maxFontSize">Maximum font size</label>
+                                <input type="text" id="maxFontSize" name="maxFontSize" class="form-control" value="50">
+                            </div>
+                        </div>
+
+                        <!-- Random Letter Color -->
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" id="randomLetterColor" name="randomLetterColor" class="form-check-input" onchange="toggleColorSelection()">
+                            <label for="randomLetterColor" class="form-check-label">Random letter color</label>
+                        </div>
+                        <div id="colorSelectionGroup" style="display: none;">
+                            <div class="mb-3">
+                                <label>Select colors to use</label>
+                                <div id="colorPickers">
+                                    <div class="color-picker-container mb-2">
+                                        <input type="color" class="form-control form-control-color" name="selectedColors" value="#d3d3d3">
+                                    </div>
+                                    <div class="color-picker-container mb-2">
+                                        <input type="color" class="form-control form-control-color" name="selectedColors" value="#000000">
+                                    </div>
+                                    <button type="button" class="btn btn-sm btn-primary" onclick="addColorPicker()">Add Color</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Random Letter Orientation -->
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" id="randomLetterOrientation" name="randomLetterOrientation" class="form-check-input" onchange="toggleLetterRotationRange()">
+                            <label for="randomLetterOrientation" class="form-check-label">Random letter orientation</label>
+                        </div>
+                        <div id="letterRotationRangeGroup" style="display: none;">
+                            <div class="mb-3">
+                                <label for="minLetterRotation">Minimum letter rotation (degrees)</label>
+                                <input type="text" id="minLetterRotation" name="minLetterRotation" class="form-control" value="0">
+                            </div>
+                            <div class="mb-3">
+                                <label for="maxLetterRotation">Maximum letter rotation (degrees)</label>
+                                <input type="text" id="maxLetterRotation" name="maxLetterRotation" class="form-control" value="360">
+                            </div>
+                        </div>
+
+                        <!-- Mixed Styling -->
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" id="mixedStyling" name="mixedStyling" class="form-check-input">
+                            <label for="mixedStyling" class="form-check-label">Mix font, color, size and orientation in the same sentence</label>
+                        </div>
+
+                        <!-- Watermark Count -->
+                        <div class="mb-3">
+                            <label for="watermarkCount">Number of watermarks</label>
+                            <input type="number" id="watermarkCount" name="watermarkCount" class="form-control" value="0" min="0">
+                            <small class="form-text text-muted">0 for automatic (grid-based)</small>
+                        </div>
+
+                        <!-- Random Shading -->
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" id="randomShading" name="randomShading" class="form-check-input" onchange="toggleOpacityRange()">
+                            <label for="randomShading" class="form-check-label">Random watermark shading</label>
+                        </div>
+                        <div id="opacityRangeGroup" style="display: none;">
+                            <div class="mb-3">
+                                <label for="minOpacity">Minimum opacity (%)</label>
+                                <input type="text" id="minOpacity" name="minOpacityText" class="form-control" value="10" onblur="updateMinOpacityValue()">
+                                <input type="hidden" id="minOpacityReal" name="minOpacity" value="0.1">
+                            </div>
+                            <div class="mb-3">
+                                <label for="maxOpacity">Maximum opacity (%)</label>
+                                <input type="text" id="maxOpacity" name="maxOpacityText" class="form-control" value="90" onblur="updateMaxOpacityValue()">
+                                <input type="hidden" id="maxOpacityReal" name="maxOpacity" value="0.9">
+                            </div>
+                        </div>
+
+                        <!-- Random Mirroring -->
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" id="randomMirroring" name="randomMirroring" class="form-check-input" onchange="toggleMirrorProbability()">
+                            <label for="randomMirroring" class="form-check-label">Random mirroring</label>
+                        </div>
+                        <div id="mirrorProbabilityGroup" style="display: none;">
+                            <div class="mb-3">
+                                <label for="mirrorProbability">Mirror probability (%)</label>
+                                <input type="text" id="mirrorProbability" name="mirrorProbability" class="form-control" value="50">
+                            </div>
+                        </div>
+
                         <div class="mb-3 text-left">
                             <button type="submit" id="submitBtn" class="btn btn-primary" th:text="#{watermark.submit}"></button>
                         </div>
@@ -163,6 +309,80 @@
                     watermarkImage.required = true;
                     alphabetGroup.style.display = 'none';
                   }
+                }
+
+                // Advanced Watermark Options Toggle Functions
+                function toggleRotationRange() {
+                  document.getElementById('rotationRangeGroup').style.display =
+                    document.getElementById('randomOrientation').checked ? 'block' : 'none';
+                }
+
+                function toggleFontSelection() {
+                  document.getElementById('fontSelectionGroup').style.display =
+                    document.getElementById('randomFont').checked ? 'block' : 'none';
+                }
+
+                function toggleFontSizeRange() {
+                  document.getElementById('fontSizeRangeGroup').style.display =
+                    document.getElementById('randomFontSize').checked ? 'block' : 'none';
+                }
+
+                function toggleColorSelection() {
+                  document.getElementById('colorSelectionGroup').style.display =
+                    document.getElementById('randomLetterColor').checked ? 'block' : 'none';
+                }
+
+                function toggleLetterRotationRange() {
+                  document.getElementById('letterRotationRangeGroup').style.display =
+                    document.getElementById('randomLetterOrientation').checked ? 'block' : 'none';
+                }
+
+                function toggleOpacityRange() {
+                  document.getElementById('opacityRangeGroup').style.display =
+                    document.getElementById('randomShading').checked ? 'block' : 'none';
+                }
+
+                function toggleMirrorProbability() {
+                  document.getElementById('mirrorProbabilityGroup').style.display =
+                    document.getElementById('randomMirroring').checked ? 'block' : 'none';
+                }
+
+                // Function to add a new color picker
+                function addColorPicker() {
+                  const colorPickers = document.getElementById('colorPickers');
+                  const newColorPicker = document.createElement('div');
+                  newColorPicker.className = 'color-picker-container mb-2';
+                  newColorPicker.innerHTML = '<input type="color" class="form-control form-control-color" name="selectedColors" value="#ff0000">';
+
+                  // Insert before the Add Color button
+                  colorPickers.insertBefore(newColorPicker, colorPickers.lastElementChild);
+                }
+
+                // Functions for opacity range controls
+                function updateMinOpacityValue() {
+                  const minOpacityInput = document.getElementById('minOpacity');
+                  const minOpacityRealInput = document.getElementById('minOpacityReal');
+
+                  let percentageValue = parseFloat(minOpacityInput.value.replace('%', ''));
+                  if (isNaN(percentageValue)) {
+                    percentageValue = 10;
+                  }
+                  percentageValue = Math.min(Math.max(percentageValue, 0), 100);
+                  minOpacityInput.value = `${percentageValue}`;
+                  minOpacityRealInput.value = (percentageValue / 100).toFixed(2);
+                }
+
+                function updateMaxOpacityValue() {
+                  const maxOpacityInput = document.getElementById('maxOpacity');
+                  const maxOpacityRealInput = document.getElementById('maxOpacityReal');
+
+                  let percentageValue = parseFloat(maxOpacityInput.value.replace('%', ''));
+                  if (isNaN(percentageValue)) {
+                    percentageValue = 90;
+                  }
+                  percentageValue = Math.min(Math.max(percentageValue, 0), 100);
+                  maxOpacityInput.value = `${percentageValue}`;
+                  maxOpacityRealInput.value = (percentageValue / 100).toFixed(2);
                 }
               </script>
             </div>
