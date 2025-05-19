@@ -126,6 +126,158 @@
                         </div>
 
 
+                        <!-- Random Options Section -->
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                <h5>Random Options</h5>
+                            </div>
+                            <div class="card-body">
+                                <!-- Positioning Type -->
+                                <div class="mb-3">
+                                    <label for="positioningType">Positioning Type:</label>
+                                    <select class="form-control" id="positioningType" name="positioningType" onchange="toggleRandomOptions()">
+                                        <option value="fixed">Fixed</option>
+                                        <option value="random">Random</option>
+                                    </select>
+                                </div>
+
+                                <!-- Orientation Type -->
+                                <div class="mb-3">
+                                    <label for="orientationType">Orientation Type:</label>
+                                    <select class="form-control" id="orientationType" name="orientationType" onchange="toggleRandomOptions()">
+                                        <option value="fixed">Fixed</option>
+                                        <option value="random">Random</option>
+                                    </select>
+                                </div>
+
+                                <!-- Min/Max Rotation Angles (initially hidden) -->
+                                <div id="rotationRangeGroup" class="mb-3" style="display: none;">
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="minRotation">Min Rotation:</label>
+                                            <input type="text" id="minRotation" name="minRotation" class="form-control" value="0">
+                                        </div>
+                                        <div class="col">
+                                            <label for="maxRotation">Max Rotation:</label>
+                                            <input type="text" id="maxRotation" name="maxRotation" class="form-control" value="360">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Text-specific random options -->
+                                <div id="textRandomOptions">
+                                    <!-- Font Selection Type -->
+                                    <div class="mb-3">
+                                        <label for="fontSelectionType">Font Selection Type:</label>
+                                        <select class="form-control" id="fontSelectionType" name="fontSelectionType" onchange="toggleRandomOptions()">
+                                            <option value="fixed">Fixed</option>
+                                            <option value="random">Random</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Font Size Type -->
+                                    <div class="mb-3">
+                                        <label for="fontSizeType">Font Size Type:</label>
+                                        <select class="form-control" id="fontSizeType" name="fontSizeType" onchange="toggleRandomOptions()">
+                                            <option value="fixed">Fixed</option>
+                                            <option value="random">Random</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Min/Max Font Size (initially hidden) -->
+                                    <div id="fontSizeRangeGroup" class="mb-3" style="display: none;">
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="minFontSize">Min Font Size:</label>
+                                                <input type="text" id="minFontSize" name="minFontSize" class="form-control" value="20">
+                                            </div>
+                                            <div class="col">
+                                                <label for="maxFontSize">Max Font Size:</label>
+                                                <input type="text" id="maxFontSize" name="maxFontSize" class="form-control" value="40">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Color Type -->
+                                    <div class="mb-3">
+                                        <label for="colorType">Color Type:</label>
+                                        <select class="form-control" id="colorType" name="colorType" onchange="toggleRandomOptions()">
+                                            <option value="fixed">Fixed</option>
+                                            <option value="random">Random</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Per-Letter Customization Section -->
+                        <div class="card mb-3" id="perLetterSection">
+                            <div class="card-header">
+                                <h5>Per-Letter Customization</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-muted">Enable these options to apply different properties to each letter in the watermark text.</p>
+
+                                <!-- Per-Letter Font -->
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" id="perLetterFont" name="perLetterFont" class="form-check-input">
+                                    <label for="perLetterFont" class="form-check-label">Per-Letter Font Variation</label>
+                                </div>
+
+                                <!-- Per-Letter Color -->
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" id="perLetterColor" name="perLetterColor" class="form-check-input">
+                                    <label for="perLetterColor" class="form-check-label">Per-Letter Color Variation</label>
+                                </div>
+
+                                <!-- Per-Letter Size -->
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" id="perLetterSize" name="perLetterSize" class="form-check-input">
+                                    <label for="perLetterSize" class="form-check-label">Per-Letter Size Variation</label>
+                                </div>
+
+                                <!-- Per-Letter Orientation -->
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" id="perLetterOrientation" name="perLetterOrientation" class="form-check-input">
+                                    <label for="perLetterOrientation" class="form-check-label">Per-Letter Orientation Variation</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Advanced Features Section -->
+                        <div class="card mb-3" id="advancedFeaturesSection">
+                            <div class="card-header">
+                                <h5>Advanced Features</h5>
+                            </div>
+                            <div class="card-body">
+                                <!-- Watermark Count -->
+                                <div class="mb-3" id="watermarkCountGroup">
+                                    <label for="watermarkCount">Number of Watermarks (for random positioning):</label>
+                                    <input type="number" id="watermarkCount" name="watermarkCount" class="form-control" value="10" min="1" max="100">
+                                    <small class="form-text text-muted">Number of watermarks to place when using random positioning.</small>
+                                </div>
+
+                                <!-- Shading Type -->
+                                <div class="mb-3" id="shadingTypeGroup">
+                                    <label for="shadingType">Shading Type:</label>
+                                    <select class="form-control" id="shadingType" name="shadingType">
+                                        <option value="none">None</option>
+                                        <option value="linear">Linear</option>
+                                        <option value="radial">Radial</option>
+                                        <option value="random">Random</option>
+                                    </select>
+                                    <small class="form-text text-muted">Apply shading effects to text watermarks.</small>
+                                </div>
+
+                                <!-- Random Mirroring -->
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" id="enableRandomMirroring" name="enableRandomMirroring" class="form-check-input">
+                                    <label for="enableRandomMirroring" class="form-check-label">Enable Random Mirroring</label>
+                                    <small class="form-text text-muted d-block">Randomly flip watermarks horizontally or vertically.</small>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="mb-3 form-check">
                             <input type="checkbox" id="convertPDFToImage" name="convertPDFToImage">
                             <label for="convertPDFToImage" th:text="#{watermark.selectText.10}"></label>
@@ -140,9 +292,13 @@
                   const watermarkType = document.getElementById('watermarkType').value;
                   const watermarkTextGroup = document.getElementById('watermarkTextGroup');
                   const watermarkImageGroup = document.getElementById('watermarkImageGroup');
-                  const alphabetGroup = document.getElementById('alphabetGroup'); // This is the new addition
+                  const alphabetGroup = document.getElementById('alphabetGroup');
                   const watermarkText = document.getElementById('watermarkText');
                   const watermarkImage = document.getElementById('watermarkImage');
+                  const textRandomOptions = document.getElementById('textRandomOptions');
+                  const perLetterSection = document.getElementById('perLetterSection');
+                  const advancedFeaturesSection = document.getElementById('advancedFeaturesSection');
+                  const shadingTypeGroup = document.getElementById('shadingTypeGroup');
 
                   if (watermarkType === 'text') {
                     if (watermarkImage.hasAttribute('required')) {
@@ -153,6 +309,10 @@
                     watermarkImageGroup.style.display = 'none';
                     watermarkImage.required = false;
                     alphabetGroup.style.display = 'block';
+                    textRandomOptions.style.display = 'block';
+                    perLetterSection.style.display = 'block'; // Show per-letter options for text watermarks
+                    advancedFeaturesSection.style.display = 'block'; // Show advanced features for text watermarks
+                    shadingTypeGroup.style.display = 'block'; // Show shading options for text watermarks
                   } else if (watermarkType === 'image') {
                     if (watermarkImage.hasAttribute('required')) {
                       watermarkImage.removeAttribute('required');
@@ -162,7 +322,80 @@
                     watermarkImageGroup.style.display = 'block';
                     watermarkImage.required = true;
                     alphabetGroup.style.display = 'none';
+                    textRandomOptions.style.display = 'none';
+                    perLetterSection.style.display = 'none'; // Hide per-letter options for image watermarks
+                    advancedFeaturesSection.style.display = 'block'; // Show advanced features for image watermarks
+                    shadingTypeGroup.style.display = 'none'; // Hide shading options for image watermarks
                   }
+
+                  // Make sure random options are properly toggled
+                  toggleRandomOptions();
+                }
+
+                function toggleRandomOptions() {
+                  // Toggle rotation range inputs
+                  const orientationType = document.getElementById('orientationType').value;
+                  const rotationRangeGroup = document.getElementById('rotationRangeGroup');
+
+                  if (orientationType === 'random') {
+                    rotationRangeGroup.style.display = 'block';
+                  } else {
+                    rotationRangeGroup.style.display = 'none';
+                  }
+
+                  // Toggle font size range inputs
+                  const fontSizeType = document.getElementById('fontSizeType').value;
+                  const fontSizeRangeGroup = document.getElementById('fontSizeRangeGroup');
+
+                  if (fontSizeType === 'random') {
+                    fontSizeRangeGroup.style.display = 'block';
+                  } else {
+                    fontSizeRangeGroup.style.display = 'none';
+                  }
+
+                  // Toggle alphabet selection based on font selection type
+                  const fontSelectionType = document.getElementById('fontSelectionType').value;
+                  const alphabetGroup = document.getElementById('alphabetGroup');
+                  const watermarkType = document.getElementById('watermarkType').value;
+
+                  if (watermarkType === 'text') {
+                    if (fontSelectionType === 'random') {
+                      alphabetGroup.style.display = 'none';
+                    } else {
+                      alphabetGroup.style.display = 'block';
+                    }
+                  }
+
+                  // Toggle color picker based on color type
+                  const colorType = document.getElementById('colorType').value;
+                  const customColorContainer = document.getElementById('customColor').parentElement;
+
+                  if (colorType === 'random') {
+                    customColorContainer.style.display = 'none';
+                  } else {
+                    customColorContainer.style.display = 'block';
+                  }
+
+                  // Toggle watermark count input based on positioning type
+                  const positioningType = document.getElementById('positioningType').value;
+                  const watermarkCountGroup = document.getElementById('watermarkCountGroup');
+
+                  if (positioningType === 'random') {
+                    watermarkCountGroup.style.display = 'block';
+                  } else {
+                    watermarkCountGroup.style.display = 'none';
+                  }
+
+                  // Validate watermark count input
+                  const watermarkCount = document.getElementById('watermarkCount');
+                  watermarkCount.addEventListener('change', function() {
+                    let count = parseInt(this.value);
+                    if (isNaN(count) || count < 1) {
+                      this.value = 1;
+                    } else if (count > 100) {
+                      this.value = 100;
+                    }
+                  });
                 }
               </script>
             </div>

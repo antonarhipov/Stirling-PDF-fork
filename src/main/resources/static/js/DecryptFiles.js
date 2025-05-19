@@ -86,7 +86,7 @@ export class DecryptFile {
         return {isEncrypted: false, requiresPassword: false};
       }
 
-      pdfjsLib.GlobalWorkerOptions.workerSrc = './pdfjs-legacy/pdf.worker.mjs';
+      pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdfjs-legacy/pdf.worker.mjs';
 
       const arrayBuffer = await file.arrayBuffer();
       const arrayBufferForPdfLib = arrayBuffer.slice(0);
